@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Blue & White Palette */
+  --navy-blue: #0a1d37;        /* Bleu foncé principal */
+  --royal-blue: #1e3a8a;       /* Bleu secondaire pour les interactions */
+  --accent-sky: #3b82f6;       /* Bleu clair pour les accents */
+  --pure-white: #ffffff;
+  --bg-light-blue: #f0f4f8;    /* Fond très légèrement bleuté pour le contraste */
+
+  /* Text Colors */
+  --text-dark: #0a1d37;
+  --text-light: #ffffff;
+  --text-grey: #64748b;
+
+  /* Global Geometry */
+  --radius: 10px;
+  --shadow-blue: 0 10px 25px rgba(10, 29, 55, 0.1);
+  --transition: all 0.3s ease-in-out;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light-blue);
+  color: var(--text-dark);
+  margin: 0;
+}
