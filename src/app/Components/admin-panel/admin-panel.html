@@ -1,0 +1,51 @@
+<div class="admin-container">
+  <h2>Gestion de la flotte (Admin)</h2>
+
+  <section class="add-vehicle">
+    <h3>Ajouter un véhicule</h3>
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+      <input formControlName="make" placeholder="Marque">
+      <input formControlName="model" placeholder="Modèle">
+      <input type="number" formControlName="price_per_day" placeholder="Prix/jour">
+
+      <select formControlName="location">
+        <option value="">-- Choisir une ville --</option>
+        @for (city of cities(); track city) {
+          <option [value]="city">{{ city }}</option>
+        }
+      </select>
+
+      <button type="submit" [disabled]="vehicleForm.invalid">Enregistrer</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <table border="1" style="width: 100%; text-align: left;">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Véhicule</th>
+      <th>Prix/Jour</th>
+      <th>Statut</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (v of vehicles(); track v.vehicle_id) {
+        <tr>
+          <td>{{ v.vehicle_id }}</td>
+          <td>{{ v.make }} {{ v.model }}</td>
+          <td>
+            {{ v.price_per_day }}€
+            <button (click)="onUpdatePrice(v)" style="font-size: 0.8em;">Modifier</button>
+          </td>
+          <td>{{ v.is_available ? '✅ Dispo' : '🛠 Maintenance' }}</td>
+          <td>
+            <button (click)="onDelete(v.vehicle_id)" style="color: red;">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
