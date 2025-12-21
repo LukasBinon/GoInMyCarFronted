@@ -23,3 +23,24 @@ body {
   color: var(--text-dark);
   margin: 0;
 }
+
+nav {
+  display: flex;
+  background-color: white ;
+}
+nav a {
+  color: #0a1d37 ;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #0a1d37;
+  color:white;
+}
+
+
+
+
