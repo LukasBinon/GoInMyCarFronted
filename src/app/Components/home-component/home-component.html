@@ -1,0 +1,60 @@
+<section class="hero">
+  <h1>Rent your dream car</h1>
+
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-container">
+    <div class="field">
+      <label for="city">City</label>
+      <select id="city" formControlName="city">
+        <option value="">All Cities</option> @for (city of cities(); track city) {
+        <option [value]="city">{{ city }}</option>
+      }
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="startDate">Start Date</label>
+      <input id="startDate" type="date" formControlName="startDate">
+    </div>
+
+    <div class="field">
+      <label for="endDate">Return Date</label>
+      <input id="endDate" type="date" formControlName="endDate">
+    </div>
+
+    <button type="submit" [disabled]="searchForm.invalid">Search Vehicles</button>
+  </form>
+
+  @if (searchForm.errors?.['incompleteSearch'] && searchForm.touched) {
+    <p class="error-msg">Please select a city or a date range.</p>
+  }
+</section>
+
+<section class="services">
+  <h2>Our Premium Services</h2>
+  <div class="services-grid">
+    <div class="card">
+      <img src="./assets/pictures/fleet.jpg" alt="Premium Fleet">
+      <h3>Premium Fleet</h3>
+      <p>A wide range of high-quality vehicles for every need.</p>
+    </div>
+    <div class="card">
+      <img src="assets/pictures/maintenance.jpg" alt="Maintenance">
+      <h3>Certified Safety</h3>
+      <p>Regular professional maintenance for your peace of mind.</p>
+    </div>
+    <div class="card">
+      <img src="assets/pictures/support.jpg" alt="Support">
+      <h3>24/7 Assistance</h3>
+      <p>Our team is always there to support you during your journey.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025 GoinMyCar. All rights reserved.</p>
+    <div class="links">
+      <a href="#">Contact Us</a> | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>

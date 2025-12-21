@@ -1,0 +1,180 @@
+/* ==========================================================================
+   HERO SECTION
+   Matches US-02 and US-03 requirements for search functionality[cite: 46].
+   ========================================================================== */
+.hero {
+  background: linear-gradient(135deg, var(--navy-blue) 0%, var(--royal-blue) 100%);
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--pure-white);
+  padding: 0 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+/* --- SEARCH BAR (Floating Container) --- */
+.search-container {
+  background: var(--pure-white);
+  padding: 20px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-blue);
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  transform: translateY(50%); /* Overlaps the hero section bottom edge */
+  max-width: 1000px;
+  width: 90%;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.field label {
+  font-weight: 700;
+  color: var(--navy-blue);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.field input, .field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--navy-blue);
+  background-color: #f8fafc;
+}
+
+button[type="submit"] {
+  background-color: var(--accent-sky);
+  color: var(--pure-white);
+  border: none;
+  padding: 12px 25px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  height: 45px;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: var(--royal-blue);
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   SERVICES SECTION (Compact Cards)
+   Reflects Vehicle Fleet quality and safety standards[cite: 35, 36].
+   ========================================================================== */
+.services {
+  padding: 120px 20px 60px; /* Top padding accounts for the floating search bar */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services h2 {
+  text-align: center;
+  color: var(--navy-blue);
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* --- COMPACT CARD DESIGN --- */
+.card {
+  background: var(--pure-white);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  max-height: 350px; /* Reduced height as requested */
+}
+
+.card:hover {
+  border-color: var(--accent-sky);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 160px; /* Reduced image height to make card compact */
+  object-fit: cover;
+}
+
+.card h3 {
+  color: var(--navy-blue);
+  font-size: 1.25rem;
+  margin: 15px 15px 5px;
+}
+
+.card p {
+  color: var(--text-grey);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 0 15px 20px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  background-color: var(--navy-blue);
+  color: var(--pure-white);
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-content p {
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.links a {
+  color: var(--accent-sky);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.links a:hover {
+  color: var(--pure-white);
+}
+
+
