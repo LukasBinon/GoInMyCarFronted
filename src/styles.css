@@ -24,22 +24,87 @@ body {
   margin: 0;
 }
 
+/* Navigation Main Container */
 nav {
   display: flex;
-  background-color: white ;
+  justify-content: space-between; /* Sépare les liens de navigation de la partie Auth */
+  align-items: center;
+  background-color: var(--pure-white);
+  padding: 10px 5%; /* Ajoute de l'espace sur les côtés */
+  box-shadow: var(--shadow-blue);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
+/* Links Groups */
+.nav-links, .auth-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espace entre les boutons/liens */
+}
+
+/* General Link Style (Overrides and extends your base) */
 nav a {
-  color: #0a1d37 ;
-  padding: 14px 20px;
+  color: var(--navy-blue);
+  padding: 10px 15px;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  font-size: 0.9rem;
 }
 
-nav a:hover {
-  background-color: #0a1d37;
-  color:white;
+/* Hover & Active States */
+nav a:hover,
+nav a.active {
+  background-color: var(--navy-blue);
+  color: var(--pure-white) !important;
 }
+
+/* Admin Panel Highlight (US-11/18) */
+.admin-link {
+  color: #dc2626 !important; /* Rouge pour l'aspect critique admin */
+  border: 1px solid #dc2626;
+}
+
+.admin-link:hover,
+.admin-link.active {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+/* Auth Section Buttons (US-17, 18, 19) */
+.btn-register {
+  background-color: var(--navy-blue);
+  color: var(--pure-white) !important;
+}
+
+.btn-register:hover {
+  background-color: var(--royal-blue);
+}
+
+.btn-logout {
+  background-color: transparent;
+  color: var(--navy-blue);
+  border: 2px solid var(--navy-blue);
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.btn-logout:hover {
+  background-color: #fee2e2; /* Rouge très léger au survol */
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+
 
 
 

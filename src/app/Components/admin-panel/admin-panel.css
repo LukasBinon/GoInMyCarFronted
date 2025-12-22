@@ -1,0 +1,203 @@
+/* --- Base Container --- */
+.admin-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--pure-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-blue);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+h2 {
+  color: var(--navy-blue);
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border-left: 5px solid var(--accent-sky);
+  padding-left: 15px;
+}
+
+/* --- Add Vehicle Section (US-8) --- */
+.add-vehicle {
+  background-color: var(--bg-light-blue);
+  padding: 25px;
+  border-radius: var(--radius);
+  margin-bottom: 40px;
+  border: 1px solid #e2e8f0;
+}
+
+.add-vehicle h3 {
+  color: var(--royal-blue);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form Grid Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Inputs & Selects Styling */
+input, select, textarea {
+  padding: 12px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: white;
+  transition: var(--transition);
+  color: var(--text-dark);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-sky);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* Error Messages & Validation */
+.error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #dc2626;
+  background-color: #fffafb;
+}
+
+/* --- Buttons --- */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+}
+
+button[type="submit"] {
+  background-color: var(--navy-blue);
+  color: white;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  margin-top: 10px;
+  width: fit-content;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: var(--royal-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 29, 55, 0.2);
+}
+
+button[type="submit"]:disabled {
+  background-color: var(--text-grey);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Action Buttons in Table */
+.btn-edit {
+  background-color: var(--bg-light-blue);
+  color: var(--royal-blue);
+  border: 1px solid var(--accent-sky) !important;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.btn-edit:hover {
+  background-color: var(--accent-sky);
+  color: white;
+}
+
+.btn-delete {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+  color: white;
+}
+
+/* --- Fleet Table (US-11) --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+thead th {
+  background-color: var(--navy-blue);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+thead th:first-child { border-radius: 10px 0 0 0; }
+thead th:last-child { border-radius: 0 10px 0 0; }
+
+tbody td {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Status Badges */
+td:nth-child(4) {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .admin-container { padding: 15px; margin: 10px; }
+  table { display: block; overflow-x: auto; }
+}

@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {HomeComponent} from './Components/home-component/home-component';
+import {AuthService} from './services/auth-service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ import {HomeComponent} from './Components/home-component/home-component';
 })
 export class App {
   protected readonly title = signal('GoInMyCar');
+  public authService = inject(AuthService);
 }

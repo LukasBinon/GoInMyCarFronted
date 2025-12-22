@@ -1,8 +1,21 @@
-
 <nav>
-  <a routerLink="">Accueil</a>
-  <a routerLinkActive="active" routerLink="vehicle-list">Vehicle List</a>
-  <a routerLink="admin" style="color: red; font-weight: bold;">PANEL ADMIN</a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/vehicle-list" routerLinkActive="active">Vehicle List</a>
+
+    @if (authService.isAdmin()) {
+      <a routerLink="/admin" routerLinkActive="active" class="admin-link">ADMIN PANEL</a>
+    }
+  </div>
+
+  <div class="auth-section">
+    @if (!authService.isLoggedIn()) {
+      <a routerLink="/login" class="btn-login">Sign In</a>
+      <a routerLink="/register" class="btn-register">Sign Up</a>
+    } @else {
+      <button (click)="authService.logout()" class="btn-logout">Logout</button>
+    }
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

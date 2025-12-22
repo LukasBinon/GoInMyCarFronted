@@ -1,33 +1,90 @@
 <div class="admin-container">
-  <h2>Gestion de la flotte (Admin)</h2>
+  <h2>Fleet Management (Admin Panel)</h2>
 
   <section class="add-vehicle">
-    <h3>Ajouter un véhicule</h3>
+    <h3>Add a New Vehicle</h3>
     <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
-      <input formControlName="make" placeholder="Marque">
-      <input formControlName="model" placeholder="Modèle">
-      <input type="number" formControlName="price_per_day" placeholder="Prix/jour">
 
-      <select formControlName="location">
-        <option value="">-- Choisir une ville --</option>
-        @for (city of cities(); track city) {
-          <option [value]="city">{{ city }}</option>
+      <div class="form-grid">
+        <div class="field">
+          <input formControlName="make" placeholder="Make">
+          @if (vehicleForm.get('make')?.touched && vehicleForm.get('make')?.invalid) {
+            <small class="error">Make is required (min 2 chars).</small>
+          }
+        </div>
+
+        <div class="field">
+          <input formControlName="model" placeholder="Model">
+          @if (vehicleForm.get('model')?.touched && vehicleForm.get('model')?.invalid) {
+            <small class="error">Model is required.</small>
+          }
+        </div>
+
+        <div class="field">
+          <input type="number" formControlName="price_per_day" placeholder="Price/Day (€)">
+          @if (vehicleForm.get('price_per_day')?.touched && vehicleForm.get('price_per_day')?.invalid) {
+            <small class="error">Must be a positive price.</small>
+          }
+        </div>
+
+        <div class="field">
+          <select formControlName="location">
+            <option value="">-- Select City --</option>
+            @for (city of cities(); track city) {
+              <option [value]="city">{{ city }}</option>
+            }
+          </select>
+          @if (vehicleForm.get('location')?.touched && vehicleForm.get('location')?.invalid) {
+            <small class="error">Please select a location.</small>
+          }
+        </div>
+
+        <div class="field">
+          <input type="number" formControlName="seat_count" placeholder="Seats (e.g. 5)">
+        </div>
+
+        <div class="field">
+          <select formControlName="transmission">
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <select formControlName="fuel_type">
+            <option value="Electric">Electric</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Gasoline">Gasoline</option>
+            <option value="Diesel">Diesel</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <input formControlName="image_url" placeholder="Image URL">
+        </div>
+      </div>
+
+      <div class="field full-width">
+        <textarea formControlName="car_description" placeholder="Vehicle Description"></textarea>
+        @if (vehicleForm.get('car_description')?.touched && vehicleForm.get('car_description')?.invalid) {
+          <small class="error">Description is required.</small>
         }
-      </select>
+      </div>
 
-      <button type="submit" [disabled]="vehicleForm.invalid">Enregistrer</button>
+      <button type="submit" [disabled]="vehicleForm.invalid">Save Vehicle</button>
     </form>
   </section>
 
   <hr>
 
-  <table border="1" style="width: 100%; text-align: left;">
+  <table>
     <thead>
     <tr>
       <th>ID</th>
-      <th>Véhicule</th>
-      <th>Prix/Jour</th>
-      <th>Statut</th>
+      <th>Vehicle</th>
+      <th>Price/Day</th>
+      <th>Status</th>
+      <th>Specs</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -35,14 +92,15 @@
       @for (v of vehicles(); track v.vehicle_id) {
         <tr>
           <td>{{ v.vehicle_id }}</td>
-          <td>{{ v.make }} {{ v.model }}</td>
+          <td><strong>{{ v.make }} {{ v.model }}</strong><br><small>{{ v.location }}</small></td>
           <td>
             {{ v.price_per_day }}€
-            <button (click)="onUpdatePrice(v)" style="font-size: 0.8em;">Modifier</button>
+            <button (click)="onUpdatePrice(v)" class="btn-edit">Edit</button>
           </td>
-          <td>{{ v.is_available ? '✅ Dispo' : '🛠 Maintenance' }}</td>
+          <td>{{ v.is_available ? '✅ Available' : '🔴 Booked / Maintenance' }}</td>
+          <td><small>{{ v.transmission }} | {{ v.fuel_type }} | {{ v.seat_count }} seats</small></td>
           <td>
-            <button (click)="onDelete(v.vehicle_id)" style="color: red;">Supprimer</button>
+            <button (click)="onDelete(v.vehicle_id)" class="btn-delete">Delete</button>
           </td>
         </tr>
       }
