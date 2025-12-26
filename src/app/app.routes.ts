@@ -8,11 +8,11 @@ import {adminGuard} from './guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path:'vehicle-list', component: VehicleList},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path:'vehicle-list.html', component: VehicleList},
+  { path: 'login.html', component: LoginComponent },
+  { path: 'register.html', component: RegisterComponent },
   {
-    path: 'admin',
+    path: 'admin.html',
     component: AdminPanel,
     canActivate: [adminGuard] // US-18: Protects the admin route
   },

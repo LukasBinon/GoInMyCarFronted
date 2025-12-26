@@ -1,17 +1,17 @@
 <nav>
   <div class="nav-links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a routerLink="/vehicle-list" routerLinkActive="active">Vehicle List</a>
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/vehicle-list.html" routerLinkActive="active">Vehicle List</a>
 
     @if (authService.isAdmin()) {
-      <a routerLink="/admin" routerLinkActive="active" class="admin-link">ADMIN PANEL</a>
+      <a routerLink="/admin.html" routerLinkActive="active" class="admin-link">ADMIN PANEL</a>
     }
   </div>
 
   <div class="auth-section">
     @if (!authService.isLoggedIn()) {
-      <a routerLink="/login" class="btn-login">Sign In</a>
-      <a routerLink="/register" class="btn-register">Sign Up</a>
+      <a routerLink="/login.html" class="btn-login">Sign In</a>
+      <a routerLink="/register.html" class="btn-register">Sign Up</a>
     } @else {
       <button (click)="authService.logout()" class="btn-logout">Logout</button>
     }

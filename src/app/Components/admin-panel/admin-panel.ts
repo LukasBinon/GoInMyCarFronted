@@ -54,11 +54,27 @@ export class AdminPanel {
   }
 
   // US-10: Update logic
-  onUpdatePrice(v: any) {
-    const newPrice = prompt(`Update price for ${v.make} ${v.model}:`, v.price_per_day.toString());
-    if (newPrice && !isNaN(Number(newPrice))) {
-      const updatedVehicle = { ...v, price_per_day: Number(newPrice) };
-      this.vehicleService.updateVehicle(v.vehicle_id, updatedVehicle).subscribe(() => this.loadVehicles());
+  onUpdatePrice(vehicle: any) {
+
+    const newPriceInput = prompt(
+      `Update price for ${vehicle.make} ${vehicle.model}:`,
+      vehicle.price_per_day.toString()
+    );
+
+
+    const numericPrice = Number(newPriceInput);
+
+    if (newPriceInput !== null && !isNaN(numericPrice) && numericPrice > 0) {
+      const updatedVehicle = { ...vehicle, price_per_day: numericPrice };
+
+
+      this.vehicleService.updateVehicle(vehicle.vehicle_id, updatedVehicle).subscribe(() => {
+
+        this.loadVehicles();
+      });
+    } else if (newPriceInput !== null) {
+
+      alert("Error: The price must be a positive numerical value.");
     }
   }
 

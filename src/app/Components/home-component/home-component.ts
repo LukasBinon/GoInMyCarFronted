@@ -57,7 +57,7 @@ export class HomeComponent {
       if (criteria.startDate) queryParams.startDate = criteria.startDate;
       if (criteria.endDate) queryParams.endDate = criteria.endDate;
 
-      this.router.navigate(['/vehicle-list'], { queryParams });
+      this.router.navigate(['/vehicle-list.html'], { queryParams });
     }
   }
 }
