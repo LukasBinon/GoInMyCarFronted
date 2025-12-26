@@ -44,12 +44,20 @@ export class HomeComponent {
   onSearch() {
     if (this.searchForm.valid) {
       const criteria = this.searchForm.value;
-      // On filtre les valeurs vides avant d'envoyer les paramètres
-      const queryParams = Object.fromEntries(
-        Object.entries(criteria).filter(([_, v]) => v !== '')
-      );
 
-      this.router.navigate(['/vehicles'], { queryParams });
+      // Création propre des paramètres
+      const queryParams: any = {};
+
+      // 1. On nettoie la ville (trim) pour éviter les espaces invisibles
+      if (criteria.city && criteria.city.trim() !== '') {
+        queryParams.city = criteria.city.trim();
+      }
+
+      // 2. On ajoute les dates seulement si elles existent
+      if (criteria.startDate) queryParams.startDate = criteria.startDate;
+      if (criteria.endDate) queryParams.endDate = criteria.endDate;
+
+      this.router.navigate(['/vehicle-list'], { queryParams });
     }
   }
 }

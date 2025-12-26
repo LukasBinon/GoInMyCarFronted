@@ -1,1 +1,35 @@
-<h1>What car do you want to drive </h1>
+<div class="container">
+  <h1>WHAT CAR DO YOU WANT TO DRIVE?</h1>
+
+  <div class="filters">
+    <select (change)="onSortChange($event)">
+      <option value="" disabled selected>Sort by</option>
+      <option value="asc">Price ascending</option>
+      <option value="desc">Price descending</option>
+    </select>
+  </div>
+
+  <div class="card-grid">
+    @for (car of vehicles; track car.vehicle_id) {
+      <div class="card">
+        <div class="card-image">
+
+        </div>
+
+        <div class="card-content">
+          <h2>{{ car.make }} {{ car.model }}</h2>
+          <p class="price">{{ car.price_per_day }}€ <span class="per-day">per day</span></p>
+
+          <p class="location">📍 {{ car.location }}</p>
+
+          <p class="desc">{{ car.car_description }}</p>
+        </div>
+
+        <div class="card-footer">
+          <span>{{ car.seat_count }} seats</span>
+        </div>
+      </div>
+    }
+    
+  </div>
+</div>

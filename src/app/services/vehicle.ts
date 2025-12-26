@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment.development';
 import {Observable} from 'rxjs';
 import {Vehicle} from '../models/vehicle';
@@ -13,12 +13,12 @@ export class VehicleService {
   private readonly baseUrl = `${environment.apiUrl}/vehicles`;
 
   // US-11
-  getAll() : Observable<any[]>{
+  getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/admin`)
   }
 
   //US-8
-  addVehicle(vehicle : any): Observable<any>{
+  addVehicle(vehicle: any): Observable<any> {
     return this.http.post(this.baseUrl, vehicle);
   }
 
@@ -36,4 +36,24 @@ export class VehicleService {
     return this.http.get<string[]>(`${this.baseUrl}/locations`);
   }
 
+  /**
+   * Récupère tous les véhicules disponibles.
+   * Gère le tri par prix (US-05, US-06).
+   */
+  getAvailableVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(this.baseUrl);
+  }
+
+  // Appelle [HttpGet("search")] du contrôleur C#
+  searchVehicles(searchParams: any): Observable<Vehicle[]> {
+    let params = new HttpParams();
+
+    if (searchParams.city) params = params.set('city', searchParams.city);
+    if (searchParams.startDate) params = params.set('start', searchParams.startDate);
+    if (searchParams.endDate) params = params.set('end', searchParams.endDate);
+
+    return this.http.get<Vehicle[]>(`${this.baseUrl}/search`, { params });
+  }
+
 }
+
