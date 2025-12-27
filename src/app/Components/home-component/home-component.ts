@@ -41,6 +41,8 @@ export class HomeComponent {
     return (hasCity || hasDates) ? null : { incompleteSearch: true };
   }
 
+  today: string = new Date().toISOString().split('T')[0];
+
   onSearch() {
     if (this.searchForm.valid) {
       const criteria = this.searchForm.value;

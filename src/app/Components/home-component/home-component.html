@@ -13,12 +13,17 @@
 
     <div class="field">
       <label for="startDate">Start Date</label>
-      <input id="startDate" type="date" formControlName="startDate">
+      <input id="startDate" type="date" formControlName="startDate" [min]="today">
     </div>
 
     <div class="field">
       <label for="endDate">Return Date</label>
-      <input id="endDate" type="date" formControlName="endDate">
+      <input
+        id="endDate"
+        type="date"
+        formControlName="endDate"
+        [min]="searchForm.get('startDate')?.value"
+      >
     </div>
 
     <button type="submit" [disabled]="searchForm.invalid">Search Vehicles</button>
