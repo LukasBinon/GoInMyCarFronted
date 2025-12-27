@@ -55,5 +55,10 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(`${this.baseUrl}/search`, { params });
   }
 
+  getById(id: number): Observable<Vehicle> {
+    // Supposant que votre API répond sur /api/vehicles/{id}
+    return this.http.get<Vehicle>(`${this.baseUrl}/${id}`);
+  }
+
 }
 

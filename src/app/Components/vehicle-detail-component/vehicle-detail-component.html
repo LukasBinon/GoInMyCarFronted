@@ -1,0 +1,38 @@
+<div class="container">
+
+  @if (vehicle$ | async; as car) {
+    <div class="detail-card">
+
+      <div class="image-section">
+      </div>
+
+      <div class="info-section">
+        <h1>{{ car.make }} {{ car.model }}</h1>
+        <p class="location">📍 {{ car.location }}</p>
+
+        <div class="price-box">
+          <span class="price">{{ car.price_per_day }}€</span>
+          <span class="per-day">/ day</span>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec">
+            <strong>Seats:</strong> {{ car.seat_count }}
+          </div>
+        </div>
+
+        <div class="description">
+          <h3>Description</h3>
+          <p>{{ car.car_description }}</p>
+        </div>
+
+        <button class="btn-reserve">
+          Reserve Now
+        </button>
+      </div>
+
+    </div>
+  } @else {
+    <p class="loading">Loading vehicle details...</p>
+  }
+</div>

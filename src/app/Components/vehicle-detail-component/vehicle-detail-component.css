@@ -1,0 +1,186 @@
+/* Utilisation des variables supposées définies dans styles.css ou root,
+   basées sur votre home-component.css */
+
+.container {
+  max-width: 900px; /* Plus étroit pour un effet "fiche compacte" */
+  margin: 2rem auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- BOUTON RETOUR --- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--text-grey, #64748b); /* Fallback si la variable manque */
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--navy-blue, #0f172a);
+}
+
+/* --- CARTE PRINCIPALE --- */
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--pure-white, #ffffff);
+  border: 1px solid #e2e8f0; /* Bordure subtile comme dans home */
+  border-radius: 8px; /* Correspond à var(--radius) environ */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* --- COLONNE GAUCHE : IMAGE --- */
+.image-section {
+  background-color: #f8fafc;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  max-height: 300px; /* Limite la hauteur pour rester compact */
+  object-fit: cover;
+}
+
+.placeholder-img {
+  font-size: 5rem;
+  opacity: 0.5;
+}
+
+/* --- COLONNE DROITE : INFOS --- */
+.info-section {
+  padding: 25px; /* Padding réduit pour être plus compact */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header: Titre et Prix sur la même ligne si possible */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+}
+
+.detail-header h1 {
+  margin: 0;
+  font-size: 1.6rem; /* Taille plus pro, moins géante */
+  color: var(--navy-blue, #0f172a);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.detail-header .location {
+  font-size: 0.85rem;
+  color: var(--text-grey, #64748b);
+  margin-top: 5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* PRIX STYLISÉ */
+.price-tag {
+  text-align: right;
+}
+
+.price-tag .amount {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-sky, #0ea5e9); /* Couleur du thème */
+}
+
+.price-tag .period {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+/* SPECS (Grille compacte) */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes strictes */
+  gap: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.spec-item {
+  background: #f8fafc;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.spec-item .label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.spec-item .value {
+  color: var(--navy-blue, #0f172a);
+  font-weight: 700;
+}
+
+/* DESCRIPTION */
+.description h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.description p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--navy-blue);
+  margin-bottom: 2rem;
+}
+
+/* BOUTON */
+.btn-reserve {
+  background-color: var(--accent-sky, #0ea5e9); /* Même bleu que le bouton Search */
+  color: var(--pure-white, white);
+  border: none;
+  padding: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: auto; /* Pousse le bouton vers le bas */
+}
+
+.btn-reserve:hover {
+  background-color: var(--royal-blue, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+

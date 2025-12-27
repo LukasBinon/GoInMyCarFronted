@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core'; // 1. Import ChangeDetectorRef
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { VehicleService } from '../../services/vehicle';
 import { Vehicle } from '../../models/vehicle';
 
 @Component({
   selector: 'app-vehicle-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './vehicle-list.html',
   styleUrl: './vehicle-list.css',
 })
